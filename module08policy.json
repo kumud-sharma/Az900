@@ -1,0 +1,65 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Storage/storageAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Web/serverFarms/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Web/sites/*"
+				    },
+                    {
+				    "field": "type",
+				    "in": ["Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
+				    }
+                ]
+			}
+		 },
+            {
+			"allOf": [
+			  {
+				"source": "action",
+				"equals": "Microsoft.Storage/storageAccounts/write"
+			  },
+			  {
+				"field": "type",
+				"equals": "Microsoft.Storage/storageAccounts"
+			  },
+			  {
+				"not": 
+				  {
+					"field": "Microsoft.Storage/storageAccounts/sku.name",
+					"in": ["StandardLRS"]
+				  }
+			   }
+			]
+		  },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.Web/serverfarms"
+			},
+			{
+			  "not": {
+				"field": "Microsoft.Web/serverfarms/sku.name",
+				"in": ["Y1"]
+				}
+			  }
+			]
+		  }
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
