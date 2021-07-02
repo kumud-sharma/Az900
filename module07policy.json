@@ -1,0 +1,28 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Devices/IotHubs/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Security/iotSecuritySolutions/*"
+				    },
+                    {
+				    "field": "type",
+				    "in": ["Microsoft.Devices/IotHubs", "Microsoft.Security/iotSecuritySolutions"]
+				    }
+                ]
+			}
+		 }
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
