@@ -5,6 +5,10 @@
     "BaseURL": "https://github.com/MicrosoftLearning/AZ-900T0x-MicrosoftAzureFundamentals",
     "Files":[
       {
+        "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai900/main/instructions/00%20-%20Local%20development.md",
+        "Order": 0
+       },
+      {
         "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/AZ-900T0x-MicrosoftAzureFundamentals/master/Instructions/Walkthroughs/01-Create%20a%20virtual%20machine.md",
         "Order": 1
        },
